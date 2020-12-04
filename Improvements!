@@ -1,0 +1,72 @@
+import time
+from time import sleep
+
+import os
+import sys
+
+def exitApp():
+    sleep(0.3)
+    sys.exit()
+    
+def menu():
+    sleep(0.3)
+    print('Press enter to continue, or type ext to exit')
+    sleep(0.3)
+    ask = input('// ')
+    
+    if ask == '':
+        sleep(0.3)
+        os.system('clear') # 'cls' for windows IIRC
+        survey()
+        
+    elif ask == 'ext':
+        sleep(0.3)
+        exitApp()
+        
+    else:
+        print('Sorry, i didnt understood, try again!')
+        menu()
+        
+def survey():
+    sleep(0.3)
+    print("Hello there. Welcome to Singapore General Hospital\nPlease fill in our AI automated survey which will only take a few minutes of your time")
+    sleep(0.1)
+    
+    ask_name = input('What is your name?: ')
+    sleep(0.3)
+    print(f'Hello, {ask_name}!')
+    
+    try:
+        ask_age = int(input('Your age?: '))
+        sleep(0.3)
+        print(f'{ask_age}, great!')
+        
+    except ValueError:
+        sleep(0.3)
+        print(f'Please enter your age as a number!')
+        sleep(0.3)
+        os.system('clear')
+        sleep(0.3)
+        survey()
+    
+    ask_gender = input('And what about your gender?: ')
+    sleep(0.3)
+    print(f'{ask_gender}, great.')
+    
+    ask_visitReason = input('May I ask the reason you visited us?: ')
+    sleep(0.3)
+    ask_email = input('We'ere also going to need your email or phone number!: ')
+    sleep(0.3)
+    
+    print(f'Ok so, your name is {ask_name}, youre {ask_age} years old, {ask_gender}, and the reason for visiting us is: "{ask_visitReason}", are those correct? Reply with "y" to continue or "n" to restart: ')
+    confirmDetails = input('// ')
+    
+    if confirmDetails == 'y':
+        sleep(0.3)
+        print("Thank you for your time. This is the end of the survey. Have a nice day.")
+            
+    elif confirmDetails == 'n':
+        sleep(0.3)
+        survey()    
+            
+menu()
